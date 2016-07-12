@@ -113,6 +113,22 @@ ods listing;
 title;
 footnote;
 
+/*Creating pdf Output*/
+ods listing close; 
+ods pdf file="&file\output.pdf"; 
+
+proc univariate data=sat_scores;  
+   var SATscore;
+   class Gender;
+   title1 'Average SAT Scores Entering College Classes, 1972-1998*';
+   footnote1 '* Recentered Scale for 1987-1995';
+run;
+
+ods pdf close; 
+ods listing; 
+title;
+footnote;
+
 /*Selecting and Excluding Program Output*/
 ods listing close;
 ods html file='odsselect-body.htm'  
